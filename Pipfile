@@ -1,0 +1,12 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+termcolor=">=1.1.0"
+python-dotenv = ">=0.20.0"
+pygithub = ">=1.55"
+github-automation = {editable = true, path = "."}
+
+[dev-packages]
