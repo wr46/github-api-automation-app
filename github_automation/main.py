@@ -36,7 +36,7 @@ def run(arg: str = sys.argv[1]) -> Optional[int]:
     opt = cli.parse_input(arg)
 
     if Option.CMD_TEST == opt:
-        print('Hello World!')
+        print('Hello World!', file=sys.stderr)
 
     return None
 
