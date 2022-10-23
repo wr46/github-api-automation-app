@@ -9,6 +9,7 @@ setup(
     description="GitHub API automation app",
     author="wr46",
     url="https://github.com/",
+    py_modules=[],
     install_requires=[
         "termcolor",
         "python-dotenv",
