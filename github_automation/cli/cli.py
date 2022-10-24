@@ -5,7 +5,7 @@ from enum import Enum
 
 class Option(Enum):
     HELP = '--help'
-    CMD_TEST = '--test'
+    CMD_LIST_REPOS = '--list-repos'
     UNKNOWN = ''
 
 
@@ -27,5 +27,5 @@ def get_command(arg: str) -> Option:
 
 def show_help():
     print('How to run it:\n command [OPTION]\n\nOptions:', file=sys.stderr)
-    print('--help : Show options', file=sys.stderr)
-    print('--test : Option to echo Hello World', file=sys.stderr)
+    print(f'{Option.HELP} : Show options', file=sys.stderr)
+    print(f'{Option.CMD_LIST_REPOS} : List Github repositories', file=sys.stderr)
