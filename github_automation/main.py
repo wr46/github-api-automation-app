@@ -1,16 +1,14 @@
 #!/usr/bin/env python
 
-import logging
 import sys
 from typing import Optional
+
 from termcolor import colored
 
+from github_automation.automation.main import execute, list_repos
 from github_automation.cli import cli
 from github_automation.cli.cli import Option
-from github_automation.configuration import config
-
-LOG_FORMAT = '%(asctime)s [%(levelname)s] %(message)s'
-logging.basicConfig(format=LOG_FORMAT, datefmt='%d/%m/%Y %H:%M:%S', level=config.LOG_LEVEL)
+from github_automation.configuration.logger import get_logger
 
 banner = r"""
                                                                                      
@@ -30,13 +28,15 @@ banner = r"""
                                                                                      
 """
 print(colored(banner, "green"), file=sys.stderr)
+logger = get_logger()
 
 
 def run(arg: str = sys.argv[1]) -> Optional[int]:
     opt = cli.parse_input(arg)
 
-    if Option.CMD_TEST == opt:
-        print('Hello World!', file=sys.stderr)
+    if Option.CMD_LIST_REPOS == opt:
+        logger.debug(f'Option {Option.CMD_LIST_REPOS.value} selected')
+        execute(list_repos)
 
     return None
 
