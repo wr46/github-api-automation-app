@@ -1,6 +1,8 @@
-# Github API Automation App
+# GitHub API Automation App
 
-Use this app in python to automate your github processes
+Use this app in python to automate your GitHub processes
+
+![github api cli preview](./.assets/github-api-app.png)
 
 ## How to use it
 

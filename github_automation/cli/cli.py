@@ -6,7 +6,8 @@ from enum import Enum
 class Option(Enum):
     HELP = '--help'
     CMD_LIST_REPOS = '--list-repos'
-    UNKNOWN = ''
+    CMD_CREATE_PR_REPOS_HV = '--create-pr-repos-having'
+    UNKNOWN = 'unknown'
 
 
 def parse_input(arg: str) -> Option:
@@ -21,11 +22,12 @@ def get_command(arg: str) -> Option:
     try:
         return Option(arg)
     except ValueError:
-        logging.error(f'Unknown option {arg}, use \'{Option.HELP.value}\' for help')
+        logging.error(f' Unknown option {arg}, use \'{Option.HELP.value}\' for help')
         return Option.UNKNOWN
 
 
 def show_help():
-    print('How to run it:\n command [OPTION]\n\nOptions:', file=sys.stderr)
-    print(f'{Option.HELP} : Show options', file=sys.stderr)
-    print(f'{Option.CMD_LIST_REPOS} : List Github repositories', file=sys.stderr)
+    print(' How to run it:\n command [OPTION]\n\n Options:', file=sys.stderr)
+    print(f' {Option.HELP.value} : Show options', file=sys.stderr)
+    print(f' {Option.CMD_LIST_REPOS.value} : List Github repositories', file=sys.stderr)
+    print(f' {Option.CMD_CREATE_PR_REPOS_HV.value} : Create PR in repositories having', file=sys.stderr)

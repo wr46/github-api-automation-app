@@ -1,15 +1,11 @@
-from typing import Callable, Any
-from github import Github
-
-from github_automation.api.auth import get_api
-from github_automation.api.repositories import get_user_repositories
+from abc import abstractmethod, ABC
 
 
-def execute(automation: Callable[[Any], None]):
-    api = get_api()
-    automation(api)
+class Runnable(ABC):
+    @abstractmethod
+    def execute(self):
+        pass
 
 
-def list_repos(api: Github):
-    for repo in get_user_repositories(api):
-        print(repo.name)
+def execute(runner: Runnable):
+    runner.execute()
