@@ -1,3 +1,4 @@
+from __future__ import annotations
 import logging
 
 from github_automation.configuration.config import APP_NAME, LOG_LEVEL
@@ -25,11 +26,22 @@ class LogFormatter(logging.Formatter):
         return formatter.format(record)
 
 
-def get_logger() -> logging.Logger:
-    handler = logging.StreamHandler()
-    handler.setLevel(logging.DEBUG)
-    handler.setFormatter(LogFormatter())
-    logger = logging.getLogger(APP_NAME)
-    logger.setLevel(LOG_LEVEL)
-    logger.addHandler(handler)
-    return logger
+class Log(object):
+    logger: logging.Logger
+
+    def __new__(cls):
+        if not hasattr(cls, 'instance'):
+            cls.instance = super(Log, cls).__new__(cls)
+            handler = logging.StreamHandler()
+            handler.setLevel(logging.DEBUG)
+            handler.setFormatter(LogFormatter())
+            cls.logger = logging.getLogger(APP_NAME)
+            cls.logger.setLevel(LOG_LEVEL)
+            cls.logger.addHandler(handler)
+        return cls.instance
+
+    def get_logger(self) -> logging.Logger:
+        return self.logger
+
+
+instance = Log()

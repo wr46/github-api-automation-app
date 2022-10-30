@@ -1,0 +1,28 @@
+# Use this file to assist on your custom automation processes setup
+# In here it can be specified filters to define execution context and
+# write additional data objects related to it
+
+
+# 'organizations' node it's not required and will specify one or more organizations
+# to be used during the automation process
+
+# OPTION 1 (without organizations node): The execution will use GitHub USER scope
+# OPTION 2 (with one or more organizations): The execution will run for listed organizations
+organizations:
+  - OrgA
+  - OrgB
+
+# 'repositories' node it's not required and will specify one or more repositories
+# to be used during the automation process
+
+# OPTION 1 (without repositories node): The execution will run for all repositories
+# OPTION 2 (with one or more repositories): The execution will run for listed repositories
+repositories:
+  - name: my-test-repo
+    branch: feature-branch-test
+  - name: my-test-repo-2
+    branch: feature-branch-test
+
+#####################################################################
+# NOTE: THIS WILL HAVE MUCH TO IMPROVE LIKE NEW NODES AND UTILITIES #
+#####################################################################

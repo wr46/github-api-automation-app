@@ -1,20 +1,26 @@
 from typing import List
 
-from github import Repository, Organization, AuthenticatedUser
+from github import Repository, AuthenticatedUser
 
 from github_automation.api import users, organizations, repositories
+from github_automation.configuration.logger import instance
+
+logger = instance.get_logger()
 
 
-def list_repos():
-    for repo in repositories.get_user_repositories():
+def list_repos(orgs: List[str], repos: List[str]):
+    orgs: List[str] = organizations.get_organizations(orgs)
+    for repo in repositories.get_repositories(repos, orgs, users.get_user()):
         print(repo.name)
 
 
 def create_prs(pr: repositories.PullRequestData, orgs: List[str], repos: List[str]):
-    if len(orgs) > 0:
-        create_prs_by_organizations(pr, orgs, repos)
-    else:
-        create_prs_by_user(pr, users.get_user(), repos)
+    print(orgs)
+    print(repos)
+    # if len(orgs) > 0:
+    #    create_prs_by_organizations(pr, orgs, repos)
+    # else:
+    #    create_prs_by_user(pr, users.get_user(), repos)
 
 
 def create_prs_by_organizations(pr: repositories.PullRequestData, orgs: List[str], repos: List[str]):

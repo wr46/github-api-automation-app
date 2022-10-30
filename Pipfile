@@ -7,6 +7,7 @@ name = "pypi"
 termcolor=">=1.1.0"
 python-dotenv = ">=0.20.0"
 pygithub = ">=1.55"
+PyYAML = ">=6.0"
 github-automation = {editable = true, path = "."}
 
 [dev-packages]
