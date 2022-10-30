@@ -48,4 +48,3 @@ make docker-run OPTION=--your-option
 ## Notes
 
 - To handle the GitHub REST API was used [PyGithub](https://github.com/PyGithub/PyGithub)
-- It was installed pipenv locally to manage python environments

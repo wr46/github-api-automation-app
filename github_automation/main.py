@@ -9,7 +9,9 @@ from github_automation.automation import core
 from github_automation.automation.repositories import runners
 from github_automation.cli import cli
 from github_automation.cli.cli import Option
-from github_automation.configuration.logger import get_logger
+from github_automation.configuration.logger import instance
+
+logger = instance.get_logger()
 
 banner = r"""
                                                                                       
@@ -29,7 +31,6 @@ banner = r"""
                                                                                       
 """
 print(colored(banner, "green"), file=sys.stderr)
-logger = get_logger()
 
 
 def run(arg: str = sys.argv[1]) -> Optional[int]:
