@@ -1,4 +1,4 @@
-FROM python:3.10-slim as build
+FROM python:3.10-slim AS build
 
 RUN pip install --user pipenv
 
@@ -24,6 +24,7 @@ RUN groupadd -g 1000 python && \
 COPY --chown=python:python --from=build /app /app
 
 WORKDIR /app
+ENV PYTHONPATH=/app
 USER python
 
 ENTRYPOINT [ "./.venv/bin/python", "github_automation/main.py" ]

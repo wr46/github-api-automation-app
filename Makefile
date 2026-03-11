@@ -1,4 +1,5 @@
-OPTION?=--help
+#OPTION?=--help
+OPTION?=--new-feat
 IMAGE=github-automation-app:local
 
 init:
@@ -10,6 +11,9 @@ install:
 
 run: init
 	@pipenv run python github_automation/main.py ${OPTION}
+
+run-test:
+	@pipenv run pytest
 
 uninstall:
 	@pipenv --rm

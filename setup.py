@@ -5,7 +5,7 @@ from setuptools import setup
 setup(
     name="github_automation",
     version="0.1.0",
-    python_requires=">=3.9",
+    python_requires=">=3.10",
     description="GitHub API automation app",
     author="wr46",
     url="https://github.com/",
@@ -13,6 +13,8 @@ setup(
     install_requires=[
         "termcolor",
         "python-dotenv",
-        "pygithub"
+        "PyGithub",
+        "PyYAML",
+        "pytest"
     ],
 )

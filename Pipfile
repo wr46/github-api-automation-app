@@ -4,10 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-termcolor=">=1.1.0"
-python-dotenv = ">=0.20.0"
-pygithub = ">=1.55"
-PyYAML = ">=6.0"
-github-automation = {editable = true, path = "."}
+termcolor=">=2.3.0"
+python-dotenv = ">=1.0.0"
+PyGithub = ">=2.1.1"
+PyYAML = ">=6.0.1"
+pytest = ">=7.4.2"
+github-automation = {file = ".", editable = true}
 
 [dev-packages]

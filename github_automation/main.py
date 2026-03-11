@@ -6,10 +6,9 @@ from typing import Optional
 from termcolor import colored
 
 from github_automation.automation import core
-from github_automation.automation.repositories import runners
 from github_automation.cli import cli
-from github_automation.cli.cli import Option
 from github_automation.configuration.logger import instance
+from github_automation.configuration.config import APP_BANNER
 
 logger = instance.get_logger()
 
@@ -30,21 +29,18 @@ banner = r"""
  ╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
                                                                                       
 """
-print(colored(banner, "green"), file=sys.stderr)
 
 
 def run(arg: str = sys.argv[1]) -> Optional[int]:
     opt = cli.parse_input(arg)
-    logger.debug(f'Option {opt.value} selected')
-
-    if Option.CMD_LIST_REPOS == opt:
-        core.execute(runners.ReposLister())
-
-    if Option.CMD_CREATE_PR_REPOS_HV == opt:
-        core.execute(runners.PullRequestCreator())
+    logger.debug(f'Option {opt.name} selected')
+    if opt.value.has_runner:
+        core.execute(opt.value.runnable)
 
     return None
 
 
 if __name__ == '__main__':
+    if APP_BANNER is True:
+        print(colored(banner, "green"), file=sys.stderr)
     sys.exit(run())

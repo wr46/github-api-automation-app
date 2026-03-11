@@ -1,0 +1,15 @@
+organizations:
+  - name: "orgaA"
+repositories:
+  - name: "testing"
+branches:
+  - name: "main"
+commits:
+  - name: "add-something"
+    message: "Commit message text!"
+    filePath: "test.py"
+pullRequests:
+  - title: "PR title text"
+    body: "This is the PR body text"
+    branch: "main"
+

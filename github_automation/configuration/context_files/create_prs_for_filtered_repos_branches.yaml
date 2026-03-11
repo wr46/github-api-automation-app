@@ -1,0 +1,10 @@
+organizations:
+  - name: "OrgA"
+repositories:
+  - name: RepoA
+    branch: branchA
+  - name: RepoB
+    branch: branchA
+branches: {}
+commits: {}
+pullRequests: {}
