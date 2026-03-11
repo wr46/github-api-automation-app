@@ -1,4 +1,4 @@
-from github import Github
+from github import Auth, Github
 
 from github_automation.configuration import config
 
@@ -15,10 +15,11 @@ def _is_public_github(hostname: str) -> bool:
 def _get_api() -> Github:
     token = config.GITHUB_TOKEN
     hostname = config.GITHUB_HOSTNAME
+    auth = Auth.Token(token) if token else None
     if _is_public_github(hostname):
-        return Github(login_or_token=token)
+        return Github(auth=auth)
     base_url = f'https://{hostname}{config.GITHUB_API_URL_VERSION}'
-    return Github(login_or_token=token, base_url=base_url)
+    return Github(auth=auth, base_url=base_url)
 
 
 api = _get_api()
