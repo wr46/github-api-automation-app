@@ -1,4 +1,4 @@
-FROM python:3.10-slim AS build
+FROM python:3.12-slim AS build
 
 RUN pip install --user pipenv
 
@@ -14,10 +14,8 @@ COPY ./github_automation ./github_automation
 RUN /root/.local/bin/pipenv sync
 
 
-FROM python:3.10-slim
+FROM python:3.12-slim
 
-RUN apt-get update && apt-get install -y git
-    
 RUN groupadd -g 1000 python && \
     useradd -m -r -u 1000 -g python python
 

@@ -36,4 +36,4 @@ def _get_node_by_type(nodes: List[Node], node_type: ...) -> List[Node]:
 def _get_parsable_data(yaml_path: str, parsable: Node) -> ...:
     with open(yaml_path, 'r') as stream:
         data = yaml.safe_load(stream)
-        return data[parsable.yaml_tag()]
+        return data.get(parsable.yaml_tag()) if isinstance(data, dict) else None
